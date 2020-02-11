@@ -2,6 +2,8 @@
 
 Game of pong written in Rust and using the Amethyst game engine.
 
+See: [Pong tutorial](https://book.amethyst.rs/stable/pong-tutorial.html)
+
 ## How to run
 
 To run the game, use

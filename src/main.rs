@@ -8,9 +8,11 @@ use amethyst::{
     utils::application_root_dir,
 };
 
-pub struct Pong;
+mod pong;
 
-impl SimpleState for Pong {}
+use crate::pong::Pong;
+
+use amethyst::core::transform::TransformBundle;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -28,7 +30,10 @@ fn main() -> amethyst::Result<()> {
                 )
                 // RenderFlat2D plugin is used to render entities with a `SpriteRender` component.
                 .with_plugin(RenderFlat2D::default()),
-        )?;
+        )?
+
+        // Add the transform bundle which handles tracking entity positions
+        .with_bundle(TransformBundle::new())?;
 
     let assets_dir = app_root.join("assets");
     let mut world = World::new();
