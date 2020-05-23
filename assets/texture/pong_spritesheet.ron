@@ -3,7 +3,7 @@
     Sprites
 */
 
-List((
+(
     texture_width: 8,
     texture_height: 16,
     sprites: [
@@ -20,4 +20,4 @@ List((
             height: 4,
         ),
     ],
-))
+)
