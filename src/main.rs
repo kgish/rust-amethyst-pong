@@ -1,4 +1,8 @@
+mod pong;
+mod systems;
+
 use amethyst::{
+    core::transform::TransformBundle,
     input::{InputBundle, StringBindings},
     prelude::*,
     renderer::{
@@ -9,11 +13,7 @@ use amethyst::{
     utils::application_root_dir,
 };
 
-mod pong;
-
 use crate::pong::Pong;
-
-use amethyst::core::transform::TransformBundle;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -41,6 +41,7 @@ fn main() -> amethyst::Result<()> {
         // Add the transform bundle which handles tracking entity positions
         .with_bundle(TransformBundle::new())?
         .with_bundle(input_bundle)?
+        .with(systems::PaddleSystem, "paddle_system", &["input_system"])
         ;
 
     let assets_dir = app_root.join("assets");
